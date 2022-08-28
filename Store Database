@@ -1,0 +1,35 @@
+--Create a grocery store database
+
+CREATE TABLE store (id INTEGER PRIMARY KEY, item TEXT, color TEXT, condition TEXT, price INTEGER);
+
+INSERT INTO store VALUES (1, "shirts", "blue", "new", 10);
+INSERT INTO store VALUES (2, "shorts", "white", "new", 8);
+INSERT INTO store VALUES (3, "pants", "pink", "used", 6);
+INSERT INTO store VALUES (4, "skirts", "yellow", "used", 7);
+INSERT INTO store VALUES (5, "shoes", "black", "new", 10);
+INSERT INTO store VALUES (6, "socks", "white", "new", 6); 
+INSERT INTO store VALUES (7, "gloves", "black", "used", 2); 
+INSERT INTO store VALUES (8, "balls", "red", "used", 1); 
+INSERT INTO store VALUES (9, "Belts", "brown", "new", 7); 
+INSERT INTO store VALUES (10, "Ties", "red", "new", 20);
+INSERT INTO store VALUES (11, "tights", "black", "new", 15);
+INSERT INTO store VALUES (12, "headbands", "pink", "new", 5); 
+INSERT INTO store VALUES (13, "bracelets", "gold", "used", 40);
+INSERT INTO store VALUES (14, "rings", "silver", "new", 35); 
+INSERT INTO store VALUES (15, "necklaces", "rose", "new", 25);
+
+SELECT * FROM store;
+
+--Display the items in the database priced over 10 dollars, ordered by id.
+SELECT * FROM store WHERE price > 10 ORDER BY id;
+
+--Display the items in the store that have the color black, ordered by price. 
+SELECT * FROM store WHERE color = "black" ORDER BY price;
+
+--Display the 10 most expensive items in descending order. 
+SELECT item, price FROM store ORDER BY price desc LIMIT 10;
+
+
+
+
+
