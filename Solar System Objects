@@ -80,3 +80,4 @@ CASE
 END AS "Density Level"
 From solar_system_objects
 GROUP BY "Density Level";
+
