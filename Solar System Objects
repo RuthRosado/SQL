@@ -45,13 +45,13 @@ INSERT INTO solar_system_objects(body,mean_radius,mean_radius_rel,volume,volume_
 INSERT INTO solar_system_objects(body,mean_radius,mean_radius_rel,volume,volume_rel,mass,mass_rel,density,surface_gravity,surface_gravity_rel,type_of_object,shape) VALUES ('Tethys ',531.1,0.083,0.624,0.0006,0.6173,0.000103,0.984,0.145,0.015,'satellite of Saturn','round');
 INSERT INTO solar_system_objects(body,mean_radius,mean_radius_rel,volume,volume_rel,mass,mass_rel,density,surface_gravity,surface_gravity_rel,type_of_object,shape) VALUES ('Ceres ',476.2,0.076,0.437,0.0004,0.95,0.000159,2.077,0.27,0.0275,'dwarf planet belt asteroid','round');
 
--- Display the full database chart. 
+-- Display the full database table. 
 SELECT * FROM solar_system_objects;
 
 --Display the density of each solar system object. 
 SELECT body, (density) FROM solar_system_objects GROUP BY body;
 
--- What is the max mass from the bodies in the solar system that are greater than 4.000? 
+--What is the max mass from the bodies in the solar system that are greater than 4.000? 
 SELECT body, Max (mass) FROM solar_system_objects GROUP BY body HAVING mass > 4.000;
 
 --Display the solar system objects that are classified as stars or planet (terrestrial). 
@@ -62,7 +62,7 @@ WHERE type_of_object= "star" OR type_of_object="planet (terrestrial)";
 SELECT * FROM solar_system_objects;
 SELECT COUNT(*) FROM solar_system_objects WHERE mean_radius > 6000;
 
--- Create a new column categorizing density of solar system objects into low and high ranges and name it "Density Level".
+--Create a new column categorizing density of solar system objects into low and high ranges and name it "Density Level".
 SELECT body, density, 
 CASE
   WHEN density < 3.0 THEN "Low Density" 
