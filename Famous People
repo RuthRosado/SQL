@@ -1,0 +1,73 @@
+CREATE TABLE Actors (id INTEGER PRIMARY KEY,
+    full_name TEXT,
+    age TEXT);
+    
+    INSERT INTO Actors (full_name, age)
+    VALUES ("Ryan Reynolds", "45");
+    INSERT INTO Actors (full_name, age)
+    VALUES ("Blake Lively", "35");
+    INSERT INTO Actors (full_name, age)
+    VALUES ("Mila Kunis", "39");
+    INSERT INTO Actors (full_name, age)
+    VALUES ("Ashton Kutcher", "44");
+    
+    CREATE TABLE Movie (id INTEGER PRIMARY KEY,
+    Actor_id INTEGER,
+    name TEXT);
+    
+    INSERT INTO Movie (Actor_id, name)
+    VALUES (1, "The Adam Project");
+    INSERT INTO Movie (Actor_id, name)
+    VALUES (2, "The Shallows");
+    INSERT INTO Movie (Actor_id, name)
+    VALUES (3, "Black Swan");
+    INSERT INTO Movie (Actor_id, name)
+    VALUES (4, "Vengeance");
+    
+    CREATE TABLE Married_Couples (id INTEGER PRIMARY KEY, 
+    Married1_id INTEGER,
+    Married2_id INTEGER);
+    
+    INSERT INTO Married_Couples (Married1_id, Married2_id)
+    VALUES (1, 2);
+    INSERT INTO Married_Couples (Married1_id, Married2_id)     VALUES (3, 4);
+    
+    CREATE TABLE Movie_Details (id INTEGER PRIMARY KEY,
+    Movie_ID INTEGER,
+    Rated TEXT,
+    Genre TEXT, 
+    Score INTEGER,
+    Premiered INTEGER,
+    Role_type TEXT);
+    
+    INSERT INTO Movie_Details (Movie_ID, Rated, Genre, Score, Premiered, Role_type)
+    VALUES (1, "PG-13", "Sci-Fi", 6.7, 2022, "Lead_Role");
+    INSERT INTO Movie_Details (Movie_ID, Rated, Genre, Score, Premiered, Role_type)
+    VALUES (2, "PG-13", "Thriller", 6.3, 2016, "Lead_Role");
+    INSERT INTO Movie_Details (Movie_ID, Rated, Genre, Score, Premiered, Role_type)
+    VALUES (3, "R", "Drama", 8, 2010, "Supporting_Role");
+    INSERT INTO Movie_Details (Movie_ID, Rated, Genre, Score, Premiered, Role_type)
+    VALUES (4, "R", "Thriller", 6.8, 2022, "Supporting_Role");
+    
+    
+--Pair up the actors with their corresponding movie.     
+SELECT a.full_name, M.name
+FROM Actors a
+JOIN Movie M
+ON a.id=M.Actor_id;
+
+--Pair up the married actors with their partners.
+SELECT a.full_name, b.full_name
+FROM Married_Couples 
+JOIN Actors a 
+ON a.id=Married_Couples.Married1_id
+JOIN Actors b 
+ON b.id=Married_Couples.Married2_id;
+
+--Pair up the movies with their corresponding genre. 
+SELECT M.name, Movie_Details.Genre
+FROM Movie M
+JOIN Movie_Details
+ON M.Actor_id=Movie_Details.Movie_ID;
+
+
